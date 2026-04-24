@@ -397,43 +397,43 @@ transform:scale(1.05);
 
 <!-- FLOATING LIGHT -->
 <script>
-for(let i=0;i<25;i++){
-let s=document.createElement("div");
-s.className="light";
+for (let i = 0; i < 25; i++) {
+  let s = document.createElement("div");
+  s.className = "light";
 
-s.style.left=Math.random()*100+"vw";
-s.style.animationDuration=(15+Math.random()*15)+"s";
-s.style.animationDelay=Math.random()*5+"s";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
 
-s.addEventListener("click", function () {
+  s.style.animationDuration = (15 + Math.random() * 15) + "s";
+  s.style.animationDelay = Math.random() * 5 + "s";
 
-  // kalau sedang jadi foto → balik jadi bintang
-  if (this.classList.contains("active")) {
+  s.addEventListener("click", function () {
 
-    this.classList.remove("active");
+    // 🔁 balik ke bintang
+    if (this.classList.contains("active")) {
 
-    // reset animasi
+      this.classList.remove("active");
+
+      this.style.animation = "none";
+      void this.offsetWidth;
+      this.style.animation = "floatStar 10s infinite linear";
+
+      return;
+    }
+
+    // ⭐ jadi foto
+    const rect = this.getBoundingClientRect();
+
+    this.style.left = rect.left + "px";
+    this.style.top = rect.top + "px";
+
     this.style.animation = "none";
+    this.classList.add("active");
+  });
 
-    // trigger reflow (biar animasi bisa diulang)
-    void this.offsetWidth;
-
-    // hidupkan lagi animasi jatuh
-    this.style.animation = "floatStar 10s infinite linear";
-
-    return;
-  }
-
-  // kalau masih bintang → jadi foto
-  const rect = this.getBoundingClientRect();
-
-  this.style.left = rect.left + "px";
-  this.style.top = rect.top + "px";
-
-  this.style.animation = "none";
-
-  this.classList.add("active");
-});
+  document.body.appendChild(s); // 🔥 INI WAJIB
+}
+  
 </script>
 
 <!-- OPENING -->
