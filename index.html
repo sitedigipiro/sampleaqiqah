@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Undangan Aqiqah Royal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= ROOT ROYAL ================= */
+:root{
+--primary:#0f3d2e;
+--secondary:#1b5e20;
+--gold:#d4af37;
+--bg:#fbf8ef;
+--text:#2b2b2b;
+--card:#ffffff;
+}
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+.light{
+position:fixed;
+width:18px;
+height:18px;
+cursor:pointer;
+z-index:1;
+animation:floatStar 10s infinite linear;
+}
+
+/* mode bintang */
+.light::before{
+content:"⭐";
+font-size:16px;
+position:absolute;
+color:#d4af37;
+text-shadow:0 0 8px rgba(212,175,55,0.8);
+}
+
+/* mode berubah jadi foto */
+.light.active{
+width:60px;
+height:60px;
+animation:none;
+}
+
+.light.active::before{
+content:"";
+}
+
+.light.active{
+background:url('assets/images/anak.png') center/cover no-repeat;
+border-radius:50%;
+box-shadow:0 0 15px rgba(212,175,55,0.6);
+}
+
+@keyframes floatStar{
+0%{transform:translateY(-10vh) translateX(0) rotate(0deg); opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(110vh) translateX(30px) rotate(360deg); opacity:0;}
+}
+
+/* ================= OPENING ================= */
+#opening{
+position:fixed;
+inset:0;
+background:url('assets/images/royal-bg.jpg') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+text-align:center;
+color:white;
+}
+
+#opening::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.8);
+}
+
+.opening-content{
+position:relative;
+z-index:2;
+}
+
+.opening-content h1{
+font-family:'Playfair Display';
+font-size:42px;
+color:var(--gold);
+text-shadow:0 0 15px rgba(212,175,55,0.5);
+}
+
+.btn-open{
+margin-top:20px;
+padding:12px 28px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#d4af37,#b8860b);
+color:white;
+cursor:pointer;
+}
+
+/* ================= HERO ================= */
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+background:url('assets/images/royal.png') center/cover no-repeat;
+
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,0.35),
+rgba(15,61,46,0.75)
+);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+color:white;
+}
+
+.script-name{
+font-family:'Playfair Display';
+font-size:64px;
+color:var(--gold);
+text-shadow:0 0 20px rgba(212,175,55,0.6);
+}
+
+#musicBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:55px;
+height:55px;
+border-radius:50%;
+background:linear-gradient(45deg,#d4af37,#b8860b);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:22px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+z-index:99999;
+transition:.3s;
+}
+
+#musicBtn:hover{
+transform:scale(1.1);
+}
+
+/* ================= SECTION ================= */
+section{
+padding:80px 0;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:0 20px;
+}
+
+.title{
+text-align:center;
+font-family:'Playfair Display';
+font-size:32px;
+margin-bottom:40px;
+position:relative;
+}
+
+.title::after{
+content:"";
+width:60px;
+height:2px;
+background:var(--gold);
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+bottom:-15px;
+}
+
+/* ================= CARD ================= */
+.card{
+background:rgba(255,255,255,0.95);
+padding:25px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+border:1px solid rgba(212,175,55,0.3);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 25px rgba(212,175,55,0.3);
+}
+
+/* ================= BIODATA ================= */
+.bio-box{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:30px;
+}
+
+.bio-text{
+flex:1;
+}
+
+.bio-text h3{
+font-family:'Playfair Display';
+color:var(--gold);
+margin-bottom:10px;
+}
+
+.bio-photo img{
+width:160px;
+height:160px;
+object-fit:cover;
+border-radius:50%;
+border:4px solid var(--gold);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+@media(max-width:600px){
+.bio-box{
+flex-direction:column;
+text-align:center;
+}
+}
+
+/* ================= RSVP ================= */
+.rsvp-box{
+text-align:center;
+}
+
+.rsvp-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.rsvp-btn{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+color:white;
+cursor:pointer;
+font-weight:500;
+transition:.3s;
+}
+
+.rsvp-btn:hover{
+transform:scale(1.05);
+}
+
+.hadir{
+background:linear-gradient(45deg,#1b5e20,#4caf50);
+}
+
+.tidak{
+background:linear-gradient(45deg,#b71c1c,#e53935);
+}
+
+#rsvpResult{
+margin-top:15px;
+font-weight:500;
+color:var(--gold);
+}
+
+/* ===== BABY FLOAT ANIMATION ===== */
+.baby-float{
+position:absolute;
+top:20%;
+left:50%;
+transform:translateX(-50%);
+z-index:2;
+animation:babyMove 4s ease-in-out infinite;
+}
+
+.baby-float img{
+width:90px;
+height:90px;
+filter:drop-shadow(0 0 10px rgba(212,175,55,0.6));
+}
+
+/* gerakan naik turun lembut */
+@keyframes babyMove{
+0%{transform:translate(-50%,0);}
+50%{transform:translate(-50%,-20px);}
+100%{transform:translate(-50%,0);}
+}
+
+.baby-float::after{
+content:"";
+position:absolute;
+inset:-20px;
+background:radial-gradient(circle, rgba(212,175,55,0.3), transparent);
+border-radius:50%;
+animation:glow 3s infinite;
+}
+
+@keyframes glow{
+0%,100%{opacity:0.4;}
+50%{opacity:0.8;}
+}
+
+/* ===== DATE BOX HERO ===== */
+.date-box{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.date-item{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+border:1px solid rgba(212,175,55,0.4);
+border-radius:15px;
+padding:12px 18px;
+min-width:80px;
+text-align:center;
+box-shadow:0 0 15px rgba(212,175,55,0.15);
+transition:.3s;
+}
+
+.date-item:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px rgba(212,175,55,0.3);
+}
+
+.date-item h2{
+margin:0;
+font-family:'Playfair Display';
+color:var(--gold);
+font-size:22px;
+}
+
+.date-item p{
+margin:0;
+font-size:12px;
+color:white;
+opacity:0.8;
+letter-spacing:1px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:15px;
+}
+
+.grid img{
+width:100%;
+height:auto;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:15px;
+display:block;
+transition:0.3s;
+}
+
+.grid img:hover{
+transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING LIGHT -->
+<script>
+for(let i=0;i<25;i++){
+let s=document.createElement("div");
+s.className="light";
+
+s.style.left=Math.random()*100+"vw";
+s.style.animationDuration=(15+Math.random()*15)+"s";
+s.style.animationDelay=Math.random()*5+"s";
+
+/* CLICK EVENT */
+s.addEventListener("click", function(){
+this.classList.toggle("active");
+});
+
+document.body.appendChild(s);
+}
+</script>
+
+<!-- OPENING -->
+<div id="opening">
+  <div class="opening-content">
+    <p>👑 Tasyakuran Aqiqah 👑</p>
+    <h1>Aqiqah Ahmad</h1>
+    <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
+  </div>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-overlay"></div>
+
+<!-- ANIMASI BAYI -->
+<div class="baby-float">
+  <img src="assets/images/baby.png" alt="baby">
+</div>
+
+<div class="hero-content">
+  <p>🌙 Tasyakuran Aqiqah 🌙</p>
+  <h1 class="script-name">Ahmad</h1>
+  <div class="date-box">
+
+  <div class="date-item">
+    <h2>25</h2>
+    <p>Tanggal</p>
+  </div>
+
+  <div class="date-item">
+    <h2>Des</h2>
+    <p>Bulan</p>
+  </div>
+
+  <div class="date-item">
+    <h2>2026</h2>
+    <p>Tahun</p>
+  </div>
+
+</div>
+  <p>Dengan penuh berkah & kebahagiaan</p>
+</div>
+
+
+</section>
+
+<!-- BIO -->
+<section class="container">
+<h2 class="title">Biodata Anak</h2>
+
+<div class="card bio-box">
+
+  <div class="bio-text">
+    <h3>Bayi Ahmad</h3>
+    <p>
+      Putra dari keluarga yang penuh berkah,<br>
+      lahir dengan penuh kebahagiaan dan cinta.<br>
+      Semoga menjadi anak yang sholeh, sehat, dan berakhlak mulia.
+    </p>
+  </div>
+
+  <div class="bio-photo">
+    <img src="assets/images/anak.png">
+  </div>
+
+</div>
+</section>
+
+<!-- ACARA -->
+<section class="container">
+<h2 class="title">Acara Aqiqah</h2>
+
+<div class="card">
+<h3>Prosesi Aqiqah</h3>
+<p>08.00 WIB</p>
+</div>
+
+<div class="card" style="margin-top:15px;">
+<h3>Doa & Tasyakuran</h3>
+<p>11.00 WIB - selesai</p>
+</div>
+</section>
+
+<!-- GALERI -->
+<section class="container">
+<h2 class="title">Galeri</h2>
+
+<div class="card">
+<div class="grid">
+<img src="assets/images/foto1.png">
+<img src="assets/images/foto2.png">
+<img src="assets/images/foto3.png">
+</div>
+</div>
+</section>
+
+<!-- RSVP -->
+<section class="container">
+<h2 class="title">Konfirmasi Kehadiran</h2>
+
+<div class="card rsvp-box">
+
+<p>Mohon konfirmasi kehadiran Anda pada acara aqiqah ini</p>
+
+<div class="rsvp-buttons">
+
+<button class="rsvp-btn hadir" onclick="rsvp('Hadir')">
+✔ Hadir
+</button>
+
+<button class="rsvp-btn tidak" onclick="rsvp('Tidak Hadir')">
+✖ Tidak Hadir
+</button>
+
+</div>
+
+<p id="rsvpResult"></p>
+<p style="margin-top:10px;">
+Hadir: <span id="countHadir">0</span> |
+Tidak: <span id="countTidak">0</span>
+</p>
+
+</div>
+</section>
+
+<script>
+
+function openInvitation(){
+document.getElementById("opening").style.display="none";
+}
+
+
+</script>
+<script>
+let hadir = 0;
+let tidak = 0;
+
+function rsvp(status){
+
+if(status === "Hadir"){
+hadir++;
+document.getElementById("countHadir").innerText = hadir;
+}
+
+if(status === "Tidak Hadir"){
+tidak++;
+document.getElementById("countTidak").innerText = tidak;
+}
+
+document.getElementById("rsvpResult").innerText =
+"Terima kasih, Anda memilih: " + status;
+
+}
+</script>
+</body>
+<audio id="bgMusic" loop>
+  <source src="assets/music/aqiqah.mp3" type="audio/mpeg">
+</audio>
+
+<!-- tombol musik -->
+<div id="musicBtn" onclick="toggleMusic()">
+  🎵
+</div>
+<script>
+let isPlaying = false;
+
+function toggleMusic(){
+const music = document.getElementById("bgMusic");
+
+if(!isPlaying){
+music.play();
+isPlaying = true;
+document.getElementById("musicBtn").innerHTML = "🔊";
+} else {
+music.pause();
+isPlaying = false;
+document.getElementById("musicBtn").innerHTML = "🎵";
+}
+}
+
+/* auto play saat klik buka undangan */
+function openInvitation(){
+document.getElementById("opening").style.display="none";
+
+const music = document.getElementById("bgMusic");
+
+/* coba play otomatis */
+music.play().then(()=>{
+isPlaying = true;
+document.getElementById("musicBtn").innerHTML = "🔊";
+}).catch(()=>{
+console.log("autoplay diblok browser");
+});
+}
+</script>
+</html>
