@@ -30,6 +30,7 @@ overflow-x:hidden;
 }
 
 .light{
+transition: transform 0.3s ease, background 0.3s ease;
 position:fixed;
 width:18px;
 height:18px;
@@ -404,24 +405,35 @@ s.style.left=Math.random()*100+"vw";
 s.style.animationDuration=(15+Math.random()*15)+"s";
 s.style.animationDelay=Math.random()*5+"s";
 
-/* CLICK EVENT */
 s.addEventListener("click", function () {
 
-  // ambil posisi saat ini
+  // kalau sedang jadi foto → balik jadi bintang
+  if (this.classList.contains("active")) {
+
+    this.classList.remove("active");
+
+    // reset animasi
+    this.style.animation = "none";
+
+    // trigger reflow (biar animasi bisa diulang)
+    void this.offsetWidth;
+
+    // hidupkan lagi animasi jatuh
+    this.style.animation = "floatStar 10s infinite linear";
+
+    return;
+  }
+
+  // kalau masih bintang → jadi foto
   const rect = this.getBoundingClientRect();
 
   this.style.left = rect.left + "px";
   this.style.top = rect.top + "px";
 
-  // freeze posisi (matikan animasi)
   this.style.animation = "none";
 
-  // ubah jadi foto
   this.classList.add("active");
 });
-
-document.body.appendChild(s);
-}
 </script>
 
 <!-- OPENING -->
